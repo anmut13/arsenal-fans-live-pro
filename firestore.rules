@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // PUBLIC BROADCAST SCREEN (OBS OVERLAY READ-ONLY)
+    // OBS browser sources require instant public read access without requiring login prompts
+    match /broadcasts/{broadcastId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    match /match_events/{eventId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    match /tactical_pitch/{pitchId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    // PROTECTED ADMIN DATA & SECRETS
+    // Only authenticated directors and administrators can modify match info, API keys, and audit logs
+    match /admin_config/{configId} {
+      allow read, write: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    match /audit_logs/{logId} {
+      allow read: if request.auth != null && request.auth.token.admin == true;
+      allow create: if request.auth != null;
+    }
+  }
+}

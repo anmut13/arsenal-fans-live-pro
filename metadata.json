@@ -1,0 +1,6 @@
+{
+  "name": "Arsenal Fans Live — Broadcast Graphics Platform",
+  "description": "Professional live football broadcast graphics platform for OBS Studio with animated tactical pitch, match momentum, real-time scoreboard, player management, and statistics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

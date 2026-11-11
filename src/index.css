@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Teko', sans-serif;
+    --font-mono-sport: 'Chakra Petch', monospace;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+.font-sport-heading {
+  font-family: var(--font-heading);
+}
+
+.font-sport-mono {
+  font-family: var(--font-mono-sport);
+}
+
+.font-main {
+  font-family: var(--font-sans);
+}
+
+/* TV Broadcast Graphics Style Utilities */
+.broadcast-glass {
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.94) 0%, rgba(9, 12, 19, 0.98) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.broadcast-glass-red {
+  background: linear-gradient(135deg, rgba(219, 0, 7, 0.95) 0%, rgba(153, 0, 5, 0.98) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 100, 100, 0.25);
+  box-shadow: 0 10px 25px -5px rgba(219, 0, 7, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.broadcast-gold-badge {
+  background: linear-gradient(135deg, #c39e5c 0%, #9a7631 100%);
+  color: #0b0e14;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Turf stripes gradient */
+.pitch-stripes {
+  background: repeating-linear-gradient(
+    90deg,
+    #1b5e20 0px,
+    #1b5e20 40px,
+    #1e6b24 40px,
+    #1e6b24 80px
+  );
+}
+
+.pitch-stripes-vertical {
+  background: repeating-linear-gradient(
+    180deg,
+    #1b5e20 0px,
+    #1b5e20 40px,
+    #1e6b24 40px,
+    #1e6b24 80px
+  );
+}
+
+/* Animations */
+@keyframes goal-flash {
+  0%, 100% { opacity: 1; transform: scale(1); filter: brightness(1); }
+  50% { opacity: 1; transform: scale(1.05); filter: brightness(1.4) drop-shadow(0 0 35px #db0007); }
+}
+
+.animate-goal-flash {
+  animation: goal-flash 0.8s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.3; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 35s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Hide scrollbars for clean broadcast layout */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
